@@ -8,5 +8,6 @@ source .env
     false
 } || {
     curl -XPOST -d@failure.json $SLACK_URL
+    pwd
     exit 1
 }
