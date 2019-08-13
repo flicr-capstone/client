@@ -1,5 +1,5 @@
 {
     "username": "Deploy Failed",
     "icon_emoji": ":apple:",
-    "text": "The build or deploy failed.\nLog in to August to check its status."
+    "text": "The build failed.\nLog in to August to check its status."
 }
