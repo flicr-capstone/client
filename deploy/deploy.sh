@@ -1,10 +1,12 @@
 #!/bin/bash
+source ../.env
+source .env
 {
     npm install && 
     npm run build &&
-    curl -XPOST -d@success.json
+    curl -XPOST -d@success.json $SLACK_URL
     false
 } || {
-    curl -XPOST -d@failure.json
+    curl -XPOST -d@failure.json $SLACK_URL
     exit 1
 }
