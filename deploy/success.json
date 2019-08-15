@@ -1,5 +1,5 @@
 {
-    "username": "Deploy Succeeded",
-    "icon_emoji": ":green_apple:",
-    "text": "The build was successful.\n<https://flicr.bebopbeluga.com|View the deploy here>."
+	"username": "Deploy Succeeded",
+	"icon_emoji": ":green_apple:",
+	"text": "The build was successful.\n<https://flicr.bebopbeluga.com|View the deploy here>."
 }
