@@ -2,7 +2,7 @@
 source .env
 source deploy/.env
 {
-    npm install --production && 
+    npm install && 
     npm run build &&
     curl -XPOST -d@deploy/success.json $SLACK_URL
 } || {
