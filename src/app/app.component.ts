@@ -16,6 +16,7 @@ export class AppComponent {
 		this.onError = this.onError.bind(this);
 		this.onClose = this.onMessage.bind(this);
 		this.onOpen = this.onOpen.bind(this);
+		this.setMessage = this.setMessage.bind(this);
 	}
 
 	hello(): void {
@@ -40,10 +41,13 @@ export class AppComponent {
 
 	onMessage(event): void {
 		console.log("On message", event);
-		this.message = event.data;
-		console.log(event.data);
-		console.log(this.message);
+		this.setMessage(event.data);
 	}
+
+	setMessage(message: string): void {
+		this.message = message;
+	}
+
 	onOpen(): void {
 		console.log("On open");
 	}
