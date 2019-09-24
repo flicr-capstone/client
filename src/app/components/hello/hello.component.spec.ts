@@ -2,7 +2,7 @@ import { async, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { HelloComponent } from "./hello.component";
 
-describe("AppComponent", () => {
+describe("HelloComponent", () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],

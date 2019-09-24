@@ -13,10 +13,9 @@ export class WebSocketService {
 
 	webSocket$: WebSocketSubject<any>;
 
-	open(): WebSocketSubject<any> {
+	open(): void {
 		const { webSocketUrl } = environment;
 		this.webSocket$ = webSocket(webSocketUrl);
-		return this.webSocket$;
 	}
 
 	subscribe(subscriptionHook): Subscription {
