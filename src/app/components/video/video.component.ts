@@ -19,7 +19,9 @@ export class VideoComponent implements OnInit {
 		this.onRemoteStream = this.onRemoteStream.bind(this);
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {}
+
+	startJanus() {
 		Janus.init({
 			debug: "all",
 			dependencies: Janus.useDefaultDependencies({ adapter }),
@@ -103,6 +105,7 @@ export class VideoComponent implements OnInit {
 
 	onRemoteStream(stream) {
 		console.log("onRemoteStream", stream);
+		console.log("tracks", stream.getTracks());
 		const element = document.querySelector("video");
 		element.srcObject = stream;
 	}
