@@ -9,7 +9,7 @@ import Janus from "../../lib/janus";
 })
 export class VideoComponent implements OnInit {
 	janus: Janus;
-	pluginHandle: any;
+	pluginHandle: any = { createAnswer: undefined };
 
 	constructor() {
 		this.onJanusInit = this.onJanusInit.bind(this);
@@ -37,9 +37,6 @@ export class VideoComponent implements OnInit {
 			error(cause) {
 				console.error("Error", cause);
 			},
-			destroyed() {
-				// I should get rid of this
-			},
 		});
 	}
 
@@ -53,21 +50,6 @@ export class VideoComponent implements OnInit {
 			success: this.didAttach,
 			onmessage: this.onMessage,
 			onremotestream: this.onRemoteStream,
-			consentDialog(on) {
-				console.log("consent dialog", on);
-				// e.g., Darken the screen if on=true (getUserMedia incoming), restore it otherwise
-			},
-			onlocalstream(stream) {
-				// We have a local stream (getUserMedia worked!) to display
-			},
-			oncleanup() {
-				// PeerConnection with the plugin closed, clean the UI
-				// The plugin handle is still valid so we can create a new one
-			},
-			detached() {
-				// Connection with the plugin closed, get rid of its features
-				// The plugin handle is not valid anymore
-			},
 		});
 	}
 
@@ -78,21 +60,13 @@ export class VideoComponent implements OnInit {
 	}
 
 	onMessage(msg, jsep) {
-		console.log(msg, jsep);
-		// Handle msg, if needed, and check jsep
 		if (jsep !== undefined && jsep !== null) {
-			// We have an OFFER from the plugin
 			this.pluginHandle.createAnswer({
-				// We attach the remote OFFER
 				jsep,
-				// We want recvonly audio/video
 				media: { audioSend: false, videoSend: false, data: true },
 				success: ourjsep => {
-					// Got our SDP! Send our ANSWER to the plugin
-					console.log("jsep", ourjsep);
-					const body = { request: "start" };
 					this.pluginHandle.send({
-						message: body,
+						message: { request: "start" },
 						jsep: ourjsep,
 					});
 				},
@@ -104,8 +78,6 @@ export class VideoComponent implements OnInit {
 	}
 
 	onRemoteStream(stream) {
-		console.log("onRemoteStream", stream);
-		console.log("tracks", stream.getTracks());
 		const element = document.querySelector("video");
 		element.srcObject = stream;
 	}
