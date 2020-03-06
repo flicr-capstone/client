@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import adapter from "webrtc-adapter";
 import Janus from "../../lib/janus";
+import { PluginHandle } from "../../models/plugin-handle";
 
 @Component({
 	selector: "app-video",
@@ -9,7 +10,7 @@ import Janus from "../../lib/janus";
 })
 export class VideoComponent implements OnInit {
 	janus: Janus;
-	pluginHandle: any = { createAnswer: undefined };
+	pluginHandle: PluginHandle;
 
 	constructor() {
 		this.onJanusInit = this.onJanusInit.bind(this);
