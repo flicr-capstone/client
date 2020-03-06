@@ -11,7 +11,7 @@ const routes: Routes = [
 		component: HelloComponent,
 	},
 	{
-		path: "debugPage",
+		path: "debug",
 		component: DebugPageComponent,
 	},
 ];
