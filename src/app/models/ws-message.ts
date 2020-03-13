@@ -1,5 +1,6 @@
 export enum WsPayloadType {
 	GREET = "GREET",
+	KEY_EVENT = "KEY_EVENT",
 }
 
 export interface WsGreeting {
@@ -7,7 +8,12 @@ export interface WsGreeting {
 	greeting?: string;
 }
 
-export type WsMessage = WsGreeting;
+export interface WsKeyEvent {
+	code: string;
+	type: string;
+}
+
+export type WsMessage = WsGreeting | WsKeyEvent;
 
 export interface WsPayload {
 	type: WsPayloadType;
