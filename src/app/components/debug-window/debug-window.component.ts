@@ -1,14 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { fromEvent, Observable } from "rxjs";
-import { merge } from "rxjs";
-import {
-	distinctUntilChanged,
-	filter,
-	groupBy,
-	map,
-	mergeAll,
-} from "rxjs/operators";
-import { handleKeyDown, handleKeyUp } from "../../lib/key-events";
+import { fromEvent, merge, Observable } from "rxjs";
+import { filter } from "rxjs/operators";
+import { handleKeyEvent } from "../../lib/key-events";
 
 @Component({
 	selector: "app-debug-window",
@@ -28,10 +21,8 @@ export class DebugWindowComponent implements OnInit {
 			"keyup"
 		);
 
-		const keyPresses = merge(keyDowns, keyUps)
+		merge(keyDowns, keyUps)
 			.pipe(filter(event => !event.repeat))
-			.subscribe(e => {
-				console.log(e);
-			});
+			.subscribe(handleKeyEvent);
 	}
 }

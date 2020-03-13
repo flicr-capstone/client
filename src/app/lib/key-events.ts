@@ -1,6 +1,4 @@
-export function handleKeyDown(event: KeyboardEvent) {
-	console.log(event);
-}
-export function handleKeyUp(event: KeyboardEvent) {
-	console.log(event);
+export function handleKeyEvent(event: KeyboardEvent) {
+	const { code, type } = event;
+	console.log({ code, type });
 }
