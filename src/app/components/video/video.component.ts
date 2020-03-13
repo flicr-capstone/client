@@ -33,7 +33,7 @@ export class VideoComponent implements OnInit {
 	onJanusInit() {
 		console.log("janus initialized");
 		this.janus = new Janus({
-			server: "http://joe.local:8088/janus",
+			server: "https://joe.local/janus",
 			success: this.attach,
 			error(cause) {
 				console.error("Error", cause);
