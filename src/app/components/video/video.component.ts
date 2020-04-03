@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import adapter from "webrtc-adapter";
 import Janus from "../../lib/janus";
 import { PluginHandle } from "../../models/plugin-handle";
@@ -12,6 +12,9 @@ export class VideoComponent implements OnInit {
 	janus: Janus;
 	pluginHandle: PluginHandle;
 
+	@Input()
+	streamId: number;
+
 	constructor() {
 		this.onJanusInit = this.onJanusInit.bind(this);
 		this.attach = this.attach.bind(this);
@@ -20,7 +23,10 @@ export class VideoComponent implements OnInit {
 		this.onRemoteStream = this.onRemoteStream.bind(this);
 	}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		console.log("streamId", this.streamId);
+		this.startJanus();
+	}
 
 	startJanus() {
 		Janus.init({
@@ -55,7 +61,7 @@ export class VideoComponent implements OnInit {
 	}
 
 	didAttach(pluginHandle) {
-		pluginHandle.send({ message: { request: "watch", id: 1 } });
+		pluginHandle.send({ message: { request: "watch", id: this.streamId } });
 		this.pluginHandle = pluginHandle;
 		console.log(this.pluginHandle);
 	}
@@ -79,7 +85,9 @@ export class VideoComponent implements OnInit {
 	}
 
 	onRemoteStream(stream) {
-		const element = document.querySelector("video");
+		const element: HTMLVideoElement = document.querySelector(
+			`#remotevideo${this.streamId}`
+		);
 		element.srcObject = stream;
 	}
 }

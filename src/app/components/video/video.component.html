@@ -1,12 +1,1 @@
-<video
-	class="rounded centered"
-	id="remotevideo"
-	width="320"
-	height="240"
-	autoplay
-	playsinline
-	loop
-	src="/assets/video.mp4"
-></video>
-
-<button (click)="startJanus()">Start janus</button>
+<video [id]="'remotevideo' + streamId" autoplay (click)="startJanus()"></video>
