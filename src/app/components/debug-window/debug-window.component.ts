@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { fromEvent, merge, Observable } from "rxjs";
 import { filter } from "rxjs/operators";
 import { handleKeyEvent } from "../../lib/key-events";
@@ -10,6 +10,9 @@ import { WebSocketService } from "../../services/web-socket.service";
 	styleUrls: ["./debug-window.component.scss"],
 })
 export class DebugWindowComponent implements OnInit, OnDestroy {
+	@Input()
+	show: boolean;
+
 	constructor(private ws: WebSocketService) {}
 
 	ngOnInit() {

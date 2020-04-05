@@ -1,11 +1,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-6">
-			<app-video></app-video>
+			<app-video [streamId]="1"></app-video>
+			<app-video [streamId]="2"></app-video>
 		</div>
 
 		<div class="col-6 button-window">
-			<app-debug-window></app-debug-window>
+			<app-debug-window [show]="true"></app-debug-window>
 		</div>
 	</div>
 </div>

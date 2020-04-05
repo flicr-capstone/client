@@ -1,9 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-
-import { AppComponent } from "./components/app/app.component";
 import { DebugPageComponent } from "./components/debug-page/debug-page.component";
 import { HelloComponent } from "./components/hello/hello.component";
+import { HomeComponent } from "./components/home/home.component";
 
 const routes: Routes = [
 	{
@@ -13,6 +12,10 @@ const routes: Routes = [
 	{
 		path: "debug",
 		component: DebugPageComponent,
+	},
+	{
+		path: "",
+		component: HomeComponent,
 	},
 ];
 

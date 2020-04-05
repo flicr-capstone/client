@@ -9,6 +9,7 @@ import { AppComponent } from "./components/app/app.component";
 import { DebugPageComponent } from "./components/debug-page/debug-page.component";
 import { DebugWindowComponent } from "./components/debug-window/debug-window.component";
 import { HelloComponent } from "./components/hello/hello.component";
+import { HomeComponent } from "./components/home/home.component";
 import { VideoComponent } from "./components/video/video.component";
 
 @NgModule({
@@ -18,6 +19,7 @@ import { VideoComponent } from "./components/video/video.component";
 		VideoComponent,
 		DebugWindowComponent,
 		DebugPageComponent,
+		HomeComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
 	providers: [],
